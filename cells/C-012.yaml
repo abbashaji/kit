@@ -1,0 +1,16 @@
+id: C-012
+title: GCD and LCM
+goal: |
+  gcd(a, b) and lcm(a, b) for non-negative ints; lcm(0, x) == 0; gcd(0, 0) == 0.
+inputs:
+  - from: C-000
+    kind: implementation
+    contract: |
+      Package kit_demo lives in src/kit_demo/; pytest is configured with pythonpath=src.
+provides:
+  - "src/kit_demo/mathx.py: def gcd(a: int, b: int) -> int"
+  - "src/kit_demo/mathx.py: def lcm(a: int, b: int) -> int"
+allowed_paths: [src/kit_demo/mathx.py, tests/test_mathx.py]
+outputs: [src/kit_demo/mathx.py, tests/test_mathx.py]
+acceptance:
+  - cmd: "pytest tests/test_mathx.py -q"

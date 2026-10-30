@@ -1,0 +1,15 @@
+id: C-010
+title: FizzBuzz list
+goal: |
+  fizzbuzz(n) -> list[str] for 1..n: 'Fizz' for multiples of 3, 'Buzz' for 5, 'FizzBuzz' for both, else the number as str. n<=0 gives [].
+inputs:
+  - from: C-000
+    kind: implementation
+    contract: |
+      Package kit_demo lives in src/kit_demo/; pytest is configured with pythonpath=src.
+provides:
+  - "src/kit_demo/fizz.py: def fizzbuzz(n: int) -> list[str]"
+allowed_paths: [src/kit_demo/fizz.py, tests/test_fizz.py]
+outputs: [src/kit_demo/fizz.py, tests/test_fizz.py]
+acceptance:
+  - cmd: "pytest tests/test_fizz.py -q"

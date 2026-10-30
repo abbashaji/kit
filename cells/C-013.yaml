@@ -1,0 +1,15 @@
+id: C-013
+title: Word count
+goal: |
+  word_count(text) -> dict[str,int]: lowercase words (letters/digits/apostrophes) mapped to their frequency; empty text gives {}.
+inputs:
+  - from: C-000
+    kind: implementation
+    contract: |
+      Package kit_demo lives in src/kit_demo/; pytest is configured with pythonpath=src.
+provides:
+  - "src/kit_demo/words.py: def word_count(text: str) -> dict[str, int]"
+allowed_paths: [src/kit_demo/words.py, tests/test_words.py]
+outputs: [src/kit_demo/words.py, tests/test_words.py]
+acceptance:
+  - cmd: "pytest tests/test_words.py -q"

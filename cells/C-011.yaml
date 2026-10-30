@@ -1,0 +1,15 @@
+id: C-011
+title: Palindrome check
+goal: |
+  is_palindrome(s) -> bool ignoring case and non-alphanumerics. The empty string is a palindrome.
+inputs:
+  - from: C-000
+    kind: implementation
+    contract: |
+      Package kit_demo lives in src/kit_demo/; pytest is configured with pythonpath=src.
+provides:
+  - "src/kit_demo/pal.py: def is_palindrome(s: str) -> bool"
+allowed_paths: [src/kit_demo/pal.py, tests/test_pal.py]
+outputs: [src/kit_demo/pal.py, tests/test_pal.py]
+acceptance:
+  - cmd: "pytest tests/test_pal.py -q"
