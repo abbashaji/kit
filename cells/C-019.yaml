@@ -1,0 +1,17 @@
+id: C-019
+title: Queue (owner will stop PARTIAL)
+lease_minutes: 3
+priority: 20
+goal: |
+  class Queue: enqueue(x), dequeue() (IndexError when empty), peek() (IndexError when empty), __len__(), is_empty().
+inputs:
+  - from: C-000
+    kind: implementation
+    contract: |
+      Package kit_demo lives in src/kit_demo/; pytest is configured with pythonpath=src.
+provides:
+  - "src/kit_demo/queue_.py: class Queue"
+allowed_paths: [src/kit_demo/queue_.py, tests/test_queue_.py]
+outputs: [src/kit_demo/queue_.py, tests/test_queue_.py]
+acceptance:
+  - cmd: "pytest tests/test_queue_.py -q"

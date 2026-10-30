@@ -1,0 +1,16 @@
+id: C-020
+title: LRU cache (human takeover)
+priority: 10
+goal: |
+  class LRU(capacity): get(k) -> value or None, put(k, v); evicts the least recently used key beyond capacity; capacity < 1 raises ValueError.
+inputs:
+  - from: C-000
+    kind: implementation
+    contract: |
+      Package kit_demo lives in src/kit_demo/; pytest is configured with pythonpath=src.
+provides:
+  - "src/kit_demo/lru.py: class LRU"
+allowed_paths: [src/kit_demo/lru.py, tests/test_lru.py]
+outputs: [src/kit_demo/lru.py, tests/test_lru.py]
+acceptance:
+  - cmd: "pytest tests/test_lru.py -q"

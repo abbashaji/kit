@@ -1,0 +1,17 @@
+id: C-018
+title: Stack (owner will die)
+lease_minutes: 3
+priority: 30
+goal: |
+  class Stack: push(x), pop() (IndexError when empty), peek() (IndexError when empty), __len__(), is_empty().
+inputs:
+  - from: C-000
+    kind: implementation
+    contract: |
+      Package kit_demo lives in src/kit_demo/; pytest is configured with pythonpath=src.
+provides:
+  - "src/kit_demo/stack.py: class Stack"
+allowed_paths: [src/kit_demo/stack.py, tests/test_stack.py]
+outputs: [src/kit_demo/stack.py, tests/test_stack.py]
+acceptance:
+  - cmd: "pytest tests/test_stack.py -q"
