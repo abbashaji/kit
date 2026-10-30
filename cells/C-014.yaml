@@ -1,0 +1,16 @@
+id: C-014
+title: Parity helpers
+goal: |
+  is_even(n) and is_odd(n) for ints (negative numbers and 0 included).
+inputs:
+  - from: C-000
+    kind: implementation
+    contract: |
+      Package kit_demo lives in src/kit_demo/; pytest is configured with pythonpath=src.
+provides:
+  - "src/kit_demo/parity.py: def is_even(n: int) -> bool"
+  - "src/kit_demo/parity.py: def is_odd(n: int) -> bool"
+allowed_paths: [src/kit_demo/parity.py, tests/test_parity.py]
+outputs: [src/kit_demo/parity.py, tests/test_parity.py]
+acceptance:
+  - cmd: "pytest tests/test_parity.py -q"

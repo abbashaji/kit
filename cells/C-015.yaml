@@ -1,0 +1,15 @@
+id: C-015
+title: Rectangle area (provider)
+goal: |
+  area_rect(w, h) -> float; raises ValueError if either side is negative.
+inputs:
+  - from: C-000
+    kind: implementation
+    contract: |
+      Package kit_demo lives in src/kit_demo/; pytest is configured with pythonpath=src.
+provides:
+  - "src/kit_demo/geo.py: def area_rect(w: float, h: float) -> float  # ValueError on negative sides"
+allowed_paths: [src/kit_demo/geo.py, tests/test_geo.py]
+outputs: [src/kit_demo/geo.py, tests/test_geo.py]
+acceptance:
+  - cmd: "pytest tests/test_geo.py -q"

@@ -1,0 +1,20 @@
+id: C-017
+title: Areas integration
+type: integration
+goal: |
+  Integration test with the REAL modules: total_area([(2, 3), (1, 1)]) == 7.0 and total_area([]) == 0.0, and a negative side raises ValueError.
+inputs:
+  - from: C-015
+    kind: implementation
+    contract: |
+      src/kit_demo/geo.py: def area_rect(w: float, h: float) -> float  # ValueError on negative sides
+  - from: C-016
+    kind: implementation
+    contract: |
+      src/kit_demo/shapes.py: def total_area(rects: list[tuple[float, float]]) -> float
+provides:
+  - "src/kit_demo/areas_check.py: (none; test only)"
+allowed_paths: [tests/test_areas_integration.py]
+outputs: [tests/test_areas_integration.py]
+acceptance:
+  - cmd: "pytest tests/test_areas_integration.py -q"

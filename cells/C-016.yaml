@@ -1,0 +1,19 @@
+id: C-016
+title: Total area (consumer, codes against a CONTRACT)
+goal: |
+  total_area(rects) -> float: sum of area_rect(w, h) over a list of (w, h) tuples, using kit_demo.geo.area_rect; empty list gives 0.0.
+inputs:
+  - from: C-000
+    kind: implementation
+    contract: |
+      Package kit_demo lives in src/kit_demo/; pytest is configured with pythonpath=src.
+  - from: C-015
+    kind: contract
+    contract: |
+      src/kit_demo/geo.py: def area_rect(w: float, h: float) -> float  # ValueError on negative sides. Not merged yet: your test must inject a fake kit_demo.geo into sys.modules BEFORE importing kit_demo.shapes.
+provides:
+  - "src/kit_demo/shapes.py: def total_area(rects: list[tuple[float, float]]) -> float"
+allowed_paths: [src/kit_demo/shapes.py, tests/test_shapes.py]
+outputs: [src/kit_demo/shapes.py, tests/test_shapes.py]
+acceptance:
+  - cmd: "pytest tests/test_shapes.py -q"
