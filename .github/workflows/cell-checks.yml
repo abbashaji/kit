@@ -120,10 +120,17 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install pyyaml
-      - name: Project setup (optional script from the trusted branch, runs inside the work checkout)
+      - name: Project setup (runs inside the work checkout)
+        # A project can own this step with .github/blueprint-setup.sh on the default branch (any language).
+        # Without it, a Python default applies, so a brand-new repo needs no setup at all.
         run: |
           if [ -f trusted/.github/blueprint-setup.sh ]; then
             cd work && bash ../trusted/.github/blueprint-setup.sh
+          else
+            cd work
+            python -m pip install -q pytest
+            if [ -f requirements.txt ]; then python -m pip install -q -r requirements.txt; fi
+            if [ -f pyproject.toml ]; then python -m pip install -q -e . || echo "note: pip install -e . failed; continuing (pythonpath may cover it)"; fi
           fi
       - name: Acceptance command
         run: |
