@@ -1,0 +1,16 @@
+id: C-002
+title: Stats helpers
+goal: |
+  Functions mean(xs) and median(xs) for non-empty lists of numbers; both raise ValueError on an empty list.
+inputs:
+  - from: C-000
+    kind: implementation
+    contract: |
+      Package kit_demo lives in src/kit_demo/; pytest is configured with pythonpath=src.
+provides:
+  - "src/kit_demo/stats.py: def mean(xs: list[float]) -> float"
+  - "src/kit_demo/stats.py: def median(xs: list[float]) -> float"
+allowed_paths: [src/kit_demo/stats.py, tests/test_stats.py]
+outputs: [src/kit_demo/stats.py, tests/test_stats.py]
+acceptance:
+  - cmd: "pytest tests/test_stats.py -q"

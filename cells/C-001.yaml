@@ -1,0 +1,15 @@
+id: C-001
+title: Slugify
+goal: |
+  Function slugify(text) -> str: lowercase, non-alphanumerics become single '-', trimmed of leading/trailing '-'. slugify("") == "".
+inputs:
+  - from: C-000
+    kind: implementation
+    contract: |
+      Package kit_demo lives in src/kit_demo/; pytest is configured with pythonpath=src.
+provides:
+  - "src/kit_demo/slug.py: def slugify(text: str) -> str"
+allowed_paths: [src/kit_demo/slug.py, tests/test_slug.py]
+outputs: [src/kit_demo/slug.py, tests/test_slug.py]
+acceptance:
+  - cmd: "pytest tests/test_slug.py -q"

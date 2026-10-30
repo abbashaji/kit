@@ -1,0 +1,12 @@
+id: C-000
+title: Project skeleton
+type: skeleton
+goal: |
+  Python package kit_demo under src/ with pytest configured (pythonpath=src).
+inputs: []
+provides:
+  - "package kit_demo importable from src/; pytest runs with pythonpath=src"
+allowed_paths: [pyproject.toml, src/kit_demo/__init__.py, tests/__init__.py]
+outputs: [pyproject.toml, src/kit_demo/__init__.py, tests/__init__.py]
+acceptance:
+  - cmd: "python -c \"import sys; sys.path.insert(0,'src'); import kit_demo\""
