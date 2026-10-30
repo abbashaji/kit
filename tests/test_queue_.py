@@ -1,3 +1,5 @@
+import pytest
+
 from kit_demo.queue_ import Queue
 
 
@@ -28,3 +30,25 @@ def test_is_empty():
     assert not q.is_empty()
     q.dequeue()
     assert q.is_empty()
+
+
+def test_dequeue_empty_raises():
+    q = Queue()
+    with pytest.raises(IndexError):
+        q.dequeue()
+
+
+def test_peek_empty_raises():
+    q = Queue()
+    with pytest.raises(IndexError):
+        q.peek()
+
+
+def test_peek_is_non_destructive():
+    q = Queue()
+    q.enqueue("x")
+    q.enqueue("y")
+    assert q.peek() == "x"
+    assert q.peek() == "x"
+    assert len(q) == 2
+    assert q.dequeue() == "x"
