@@ -1,0 +1,15 @@
+id: C-036
+title: Triangular 16
+goal: |
+  tri36() -> int returns 136 (the 16th triangular number). One file, no tests file.
+inputs:
+  - from: C-000
+    kind: implementation
+    contract: |
+      kit_demo package in src/kit_demo/.
+provides:
+  - "src/kit_demo/sw/s36.py: def tri36() -> int"
+allowed_paths: [src/kit_demo/sw/s36.py]
+outputs: [src/kit_demo/sw/s36.py]
+acceptance:
+  - cmd: "python -c \"import sys; sys.path.insert(0, 'src'); from kit_demo.sw.s36 import tri36; assert tri36() == 136\""

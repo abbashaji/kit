@@ -1,0 +1,15 @@
+id: C-029
+title: Triangular 9
+goal: |
+  tri29() -> int returns 45 (the 9th triangular number). One file, no tests file.
+inputs:
+  - from: C-000
+    kind: implementation
+    contract: |
+      kit_demo package in src/kit_demo/.
+provides:
+  - "src/kit_demo/sw/s29.py: def tri29() -> int"
+allowed_paths: [src/kit_demo/sw/s29.py]
+outputs: [src/kit_demo/sw/s29.py]
+acceptance:
+  - cmd: "python -c \"import sys; sys.path.insert(0, 'src'); from kit_demo.sw.s29 import tri29; assert tri29() == 45\""

@@ -1,0 +1,15 @@
+id: C-042
+title: Triangular 22
+goal: |
+  tri42() -> int returns 253 (the 22th triangular number). One file, no tests file.
+inputs:
+  - from: C-000
+    kind: implementation
+    contract: |
+      kit_demo package in src/kit_demo/.
+provides:
+  - "src/kit_demo/sw/s42.py: def tri42() -> int"
+allowed_paths: [src/kit_demo/sw/s42.py]
+outputs: [src/kit_demo/sw/s42.py]
+acceptance:
+  - cmd: "python -c \"import sys; sys.path.insert(0, 'src'); from kit_demo.sw.s42 import tri42; assert tri42() == 253\""

@@ -1,0 +1,15 @@
+id: C-022
+title: Triangular 2
+goal: |
+  tri22() -> int returns 3 (the 2th triangular number). One file, no tests file.
+inputs:
+  - from: C-000
+    kind: implementation
+    contract: |
+      kit_demo package in src/kit_demo/.
+provides:
+  - "src/kit_demo/sw/s22.py: def tri22() -> int"
+allowed_paths: [src/kit_demo/sw/s22.py]
+outputs: [src/kit_demo/sw/s22.py]
+acceptance:
+  - cmd: "python -c \"import sys; sys.path.insert(0, 'src'); from kit_demo.sw.s22 import tri22; assert tri22() == 3\""

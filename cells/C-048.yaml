@@ -1,0 +1,15 @@
+id: C-048
+title: Triangular 28
+goal: |
+  tri48() -> int returns 406 (the 28th triangular number). One file, no tests file.
+inputs:
+  - from: C-000
+    kind: implementation
+    contract: |
+      kit_demo package in src/kit_demo/.
+provides:
+  - "src/kit_demo/sw/s48.py: def tri48() -> int"
+allowed_paths: [src/kit_demo/sw/s48.py]
+outputs: [src/kit_demo/sw/s48.py]
+acceptance:
+  - cmd: "python -c \"import sys; sys.path.insert(0, 'src'); from kit_demo.sw.s48 import tri48; assert tri48() == 406\""

@@ -1,0 +1,15 @@
+id: C-023
+title: Triangular 3
+goal: |
+  tri23() -> int returns 6 (the 3th triangular number). One file, no tests file.
+inputs:
+  - from: C-000
+    kind: implementation
+    contract: |
+      kit_demo package in src/kit_demo/.
+provides:
+  - "src/kit_demo/sw/s23.py: def tri23() -> int"
+allowed_paths: [src/kit_demo/sw/s23.py]
+outputs: [src/kit_demo/sw/s23.py]
+acceptance:
+  - cmd: "python -c \"import sys; sys.path.insert(0, 'src'); from kit_demo.sw.s23 import tri23; assert tri23() == 6\""

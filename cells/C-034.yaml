@@ -1,0 +1,15 @@
+id: C-034
+title: Triangular 14
+goal: |
+  tri34() -> int returns 105 (the 14th triangular number). One file, no tests file.
+inputs:
+  - from: C-000
+    kind: implementation
+    contract: |
+      kit_demo package in src/kit_demo/.
+provides:
+  - "src/kit_demo/sw/s34.py: def tri34() -> int"
+allowed_paths: [src/kit_demo/sw/s34.py]
+outputs: [src/kit_demo/sw/s34.py]
+acceptance:
+  - cmd: "python -c \"import sys; sys.path.insert(0, 'src'); from kit_demo.sw.s34 import tri34; assert tri34() == 105\""

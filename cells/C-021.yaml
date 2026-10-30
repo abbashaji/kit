@@ -1,0 +1,15 @@
+id: C-021
+title: Triangular 1
+goal: |
+  tri21() -> int returns 1 (the 1th triangular number). One file, no tests file.
+inputs:
+  - from: C-000
+    kind: implementation
+    contract: |
+      kit_demo package in src/kit_demo/.
+provides:
+  - "src/kit_demo/sw/s21.py: def tri21() -> int"
+allowed_paths: [src/kit_demo/sw/s21.py]
+outputs: [src/kit_demo/sw/s21.py]
+acceptance:
+  - cmd: "python -c \"import sys; sys.path.insert(0, 'src'); from kit_demo.sw.s21 import tri21; assert tri21() == 1\""

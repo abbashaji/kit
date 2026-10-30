@@ -1,0 +1,15 @@
+id: C-025
+title: Triangular 5
+goal: |
+  tri25() -> int returns 15 (the 5th triangular number). One file, no tests file.
+inputs:
+  - from: C-000
+    kind: implementation
+    contract: |
+      kit_demo package in src/kit_demo/.
+provides:
+  - "src/kit_demo/sw/s25.py: def tri25() -> int"
+allowed_paths: [src/kit_demo/sw/s25.py]
+outputs: [src/kit_demo/sw/s25.py]
+acceptance:
+  - cmd: "python -c \"import sys; sys.path.insert(0, 'src'); from kit_demo.sw.s25 import tri25; assert tri25() == 15\""

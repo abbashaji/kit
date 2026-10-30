@@ -1,0 +1,15 @@
+id: C-046
+title: Triangular 26
+goal: |
+  tri46() -> int returns 351 (the 26th triangular number). One file, no tests file.
+inputs:
+  - from: C-000
+    kind: implementation
+    contract: |
+      kit_demo package in src/kit_demo/.
+provides:
+  - "src/kit_demo/sw/s46.py: def tri46() -> int"
+allowed_paths: [src/kit_demo/sw/s46.py]
+outputs: [src/kit_demo/sw/s46.py]
+acceptance:
+  - cmd: "python -c \"import sys; sys.path.insert(0, 'src'); from kit_demo.sw.s46 import tri46; assert tri46() == 351\""

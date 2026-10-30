@@ -1,0 +1,15 @@
+id: C-028
+title: Triangular 8
+goal: |
+  tri28() -> int returns 36 (the 8th triangular number). One file, no tests file.
+inputs:
+  - from: C-000
+    kind: implementation
+    contract: |
+      kit_demo package in src/kit_demo/.
+provides:
+  - "src/kit_demo/sw/s28.py: def tri28() -> int"
+allowed_paths: [src/kit_demo/sw/s28.py]
+outputs: [src/kit_demo/sw/s28.py]
+acceptance:
+  - cmd: "python -c \"import sys; sys.path.insert(0, 'src'); from kit_demo.sw.s28 import tri28; assert tri28() == 36\""

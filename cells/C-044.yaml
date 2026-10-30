@@ -1,0 +1,15 @@
+id: C-044
+title: Triangular 24
+goal: |
+  tri44() -> int returns 300 (the 24th triangular number). One file, no tests file.
+inputs:
+  - from: C-000
+    kind: implementation
+    contract: |
+      kit_demo package in src/kit_demo/.
+provides:
+  - "src/kit_demo/sw/s44.py: def tri44() -> int"
+allowed_paths: [src/kit_demo/sw/s44.py]
+outputs: [src/kit_demo/sw/s44.py]
+acceptance:
+  - cmd: "python -c \"import sys; sys.path.insert(0, 'src'); from kit_demo.sw.s44 import tri44; assert tri44() == 300\""

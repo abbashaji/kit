@@ -1,0 +1,15 @@
+id: C-032
+title: Triangular 12
+goal: |
+  tri32() -> int returns 78 (the 12th triangular number). One file, no tests file.
+inputs:
+  - from: C-000
+    kind: implementation
+    contract: |
+      kit_demo package in src/kit_demo/.
+provides:
+  - "src/kit_demo/sw/s32.py: def tri32() -> int"
+allowed_paths: [src/kit_demo/sw/s32.py]
+outputs: [src/kit_demo/sw/s32.py]
+acceptance:
+  - cmd: "python -c \"import sys; sys.path.insert(0, 'src'); from kit_demo.sw.s32 import tri32; assert tri32() == 78\""

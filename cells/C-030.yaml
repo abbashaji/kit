@@ -1,0 +1,15 @@
+id: C-030
+title: Triangular 10
+goal: |
+  tri30() -> int returns 55 (the 10th triangular number). One file, no tests file.
+inputs:
+  - from: C-000
+    kind: implementation
+    contract: |
+      kit_demo package in src/kit_demo/.
+provides:
+  - "src/kit_demo/sw/s30.py: def tri30() -> int"
+allowed_paths: [src/kit_demo/sw/s30.py]
+outputs: [src/kit_demo/sw/s30.py]
+acceptance:
+  - cmd: "python -c \"import sys; sys.path.insert(0, 'src'); from kit_demo.sw.s30 import tri30; assert tri30() == 55\""

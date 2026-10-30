@@ -1,0 +1,15 @@
+id: C-045
+title: Triangular 25
+goal: |
+  tri45() -> int returns 325 (the 25th triangular number). One file, no tests file.
+inputs:
+  - from: C-000
+    kind: implementation
+    contract: |
+      kit_demo package in src/kit_demo/.
+provides:
+  - "src/kit_demo/sw/s45.py: def tri45() -> int"
+allowed_paths: [src/kit_demo/sw/s45.py]
+outputs: [src/kit_demo/sw/s45.py]
+acceptance:
+  - cmd: "python -c \"import sys; sys.path.insert(0, 'src'); from kit_demo.sw.s45 import tri45; assert tri45() == 325\""

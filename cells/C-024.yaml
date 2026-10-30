@@ -1,0 +1,15 @@
+id: C-024
+title: Triangular 4
+goal: |
+  tri24() -> int returns 10 (the 4th triangular number). One file, no tests file.
+inputs:
+  - from: C-000
+    kind: implementation
+    contract: |
+      kit_demo package in src/kit_demo/.
+provides:
+  - "src/kit_demo/sw/s24.py: def tri24() -> int"
+allowed_paths: [src/kit_demo/sw/s24.py]
+outputs: [src/kit_demo/sw/s24.py]
+acceptance:
+  - cmd: "python -c \"import sys; sys.path.insert(0, 'src'); from kit_demo.sw.s24 import tri24; assert tri24() == 10\""

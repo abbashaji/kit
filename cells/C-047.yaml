@@ -1,0 +1,15 @@
+id: C-047
+title: Triangular 27
+goal: |
+  tri47() -> int returns 378 (the 27th triangular number). One file, no tests file.
+inputs:
+  - from: C-000
+    kind: implementation
+    contract: |
+      kit_demo package in src/kit_demo/.
+provides:
+  - "src/kit_demo/sw/s47.py: def tri47() -> int"
+allowed_paths: [src/kit_demo/sw/s47.py]
+outputs: [src/kit_demo/sw/s47.py]
+acceptance:
+  - cmd: "python -c \"import sys; sys.path.insert(0, 'src'); from kit_demo.sw.s47 import tri47; assert tri47() == 378\""

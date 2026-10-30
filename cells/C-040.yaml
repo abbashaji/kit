@@ -1,0 +1,15 @@
+id: C-040
+title: Triangular 20
+goal: |
+  tri40() -> int returns 210 (the 20th triangular number). One file, no tests file.
+inputs:
+  - from: C-000
+    kind: implementation
+    contract: |
+      kit_demo package in src/kit_demo/.
+provides:
+  - "src/kit_demo/sw/s40.py: def tri40() -> int"
+allowed_paths: [src/kit_demo/sw/s40.py]
+outputs: [src/kit_demo/sw/s40.py]
+acceptance:
+  - cmd: "python -c \"import sys; sys.path.insert(0, 'src'); from kit_demo.sw.s40 import tri40; assert tri40() == 210\""

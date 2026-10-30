@@ -1,0 +1,15 @@
+id: C-035
+title: Triangular 15
+goal: |
+  tri35() -> int returns 120 (the 15th triangular number). One file, no tests file.
+inputs:
+  - from: C-000
+    kind: implementation
+    contract: |
+      kit_demo package in src/kit_demo/.
+provides:
+  - "src/kit_demo/sw/s35.py: def tri35() -> int"
+allowed_paths: [src/kit_demo/sw/s35.py]
+outputs: [src/kit_demo/sw/s35.py]
+acceptance:
+  - cmd: "python -c \"import sys; sys.path.insert(0, 'src'); from kit_demo.sw.s35 import tri35; assert tri35() == 120\""

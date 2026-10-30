@@ -1,0 +1,15 @@
+id: C-031
+title: Triangular 11
+goal: |
+  tri31() -> int returns 66 (the 11th triangular number). One file, no tests file.
+inputs:
+  - from: C-000
+    kind: implementation
+    contract: |
+      kit_demo package in src/kit_demo/.
+provides:
+  - "src/kit_demo/sw/s31.py: def tri31() -> int"
+allowed_paths: [src/kit_demo/sw/s31.py]
+outputs: [src/kit_demo/sw/s31.py]
+acceptance:
+  - cmd: "python -c \"import sys; sys.path.insert(0, 'src'); from kit_demo.sw.s31 import tri31; assert tri31() == 66\""
