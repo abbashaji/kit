@@ -1,0 +1,28 @@
+id: C-006
+title: Demo API facade
+type: integration
+goal: |
+  Module api.py re-exporting slugify, caesar, to_roman and c_to_f, plus a test that imports each through api and calls it once.
+inputs:
+  - from: C-001
+    kind: implementation
+    contract: |
+      src/kit_demo/slug.py: def slugify(text: str) -> str
+  - from: C-003
+    kind: implementation
+    contract: |
+      src/kit_demo/cipher.py: def caesar(text: str, shift: int) -> str
+  - from: C-004
+    kind: implementation
+    contract: |
+      src/kit_demo/roman.py: def to_roman(n: int) -> str
+  - from: C-005
+    kind: implementation
+    contract: |
+      src/kit_demo/temp.py: def c_to_f(c: float) -> float
+provides:
+  - "src/kit_demo/api.py: slugify, caesar, to_roman, c_to_f"
+allowed_paths: [src/kit_demo/api.py, tests/test_api.py]
+outputs: [src/kit_demo/api.py, tests/test_api.py]
+acceptance:
+  - cmd: "pytest tests/test_api.py -q"

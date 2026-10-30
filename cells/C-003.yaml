@@ -1,0 +1,15 @@
+id: C-003
+title: Caesar cipher
+goal: |
+  Functions caesar(text, shift) -> str and its inverse use: shift letters a-z/A-Z by shift (any int, negative allowed), keep case, leave other characters unchanged. caesar(caesar(t, k), -k) == t.
+inputs:
+  - from: C-000
+    kind: implementation
+    contract: |
+      Package kit_demo lives in src/kit_demo/; pytest is configured with pythonpath=src.
+provides:
+  - "src/kit_demo/cipher.py: def caesar(text: str, shift: int) -> str"
+allowed_paths: [src/kit_demo/cipher.py, tests/test_cipher.py]
+outputs: [src/kit_demo/cipher.py, tests/test_cipher.py]
+acceptance:
+  - cmd: "pytest tests/test_cipher.py -q"

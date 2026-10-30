@@ -1,0 +1,16 @@
+id: C-004
+title: Roman numerals
+goal: |
+  Function to_roman(n) -> str for 1..3999 (ValueError outside that range), and from_roman(s) -> int, its inverse for valid numerals.
+inputs:
+  - from: C-000
+    kind: implementation
+    contract: |
+      Package kit_demo lives in src/kit_demo/; pytest is configured with pythonpath=src.
+provides:
+  - "src/kit_demo/roman.py: def to_roman(n: int) -> str"
+  - "src/kit_demo/roman.py: def from_roman(s: str) -> int"
+allowed_paths: [src/kit_demo/roman.py, tests/test_roman.py]
+outputs: [src/kit_demo/roman.py, tests/test_roman.py]
+acceptance:
+  - cmd: "pytest tests/test_roman.py -q"
