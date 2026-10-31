@@ -1,0 +1,15 @@
+id: C-063
+title: Square 13
+goal: |
+  sq63() -> int returns 169. One file, no tests file.
+inputs:
+  - from: C-000
+    kind: implementation
+    contract: |
+      kit_demo package in src/kit_demo/.
+provides:
+  - "src/kit_demo/sw/q63.py: def sq63() -> int"
+allowed_paths: [src/kit_demo/sw/q63.py]
+outputs: [src/kit_demo/sw/q63.py]
+acceptance:
+  - cmd: "python -c \"import sys; sys.path.insert(0, 'src'); from kit_demo.sw.q63 import sq63; assert sq63() == 169\""

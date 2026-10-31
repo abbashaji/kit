@@ -1,0 +1,15 @@
+id: C-064
+title: Square 14
+goal: |
+  sq64() -> int returns 196. One file, no tests file.
+inputs:
+  - from: C-000
+    kind: implementation
+    contract: |
+      kit_demo package in src/kit_demo/.
+provides:
+  - "src/kit_demo/sw/q64.py: def sq64() -> int"
+allowed_paths: [src/kit_demo/sw/q64.py]
+outputs: [src/kit_demo/sw/q64.py]
+acceptance:
+  - cmd: "python -c \"import sys; sys.path.insert(0, 'src'); from kit_demo.sw.q64 import sq64; assert sq64() == 196\""

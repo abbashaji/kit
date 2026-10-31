@@ -1,0 +1,15 @@
+id: C-079
+title: Square 29
+goal: |
+  sq79() -> int returns 841. One file, no tests file.
+inputs:
+  - from: C-000
+    kind: implementation
+    contract: |
+      kit_demo package in src/kit_demo/.
+provides:
+  - "src/kit_demo/sw/q79.py: def sq79() -> int"
+allowed_paths: [src/kit_demo/sw/q79.py]
+outputs: [src/kit_demo/sw/q79.py]
+acceptance:
+  - cmd: "python -c \"import sys; sys.path.insert(0, 'src'); from kit_demo.sw.q79 import sq79; assert sq79() == 841\""

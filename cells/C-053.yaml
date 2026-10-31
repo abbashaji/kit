@@ -1,0 +1,15 @@
+id: C-053
+title: Square 3
+goal: |
+  sq53() -> int returns 9. One file, no tests file.
+inputs:
+  - from: C-000
+    kind: implementation
+    contract: |
+      kit_demo package in src/kit_demo/.
+provides:
+  - "src/kit_demo/sw/q53.py: def sq53() -> int"
+allowed_paths: [src/kit_demo/sw/q53.py]
+outputs: [src/kit_demo/sw/q53.py]
+acceptance:
+  - cmd: "python -c \"import sys; sys.path.insert(0, 'src'); from kit_demo.sw.q53 import sq53; assert sq53() == 9\""

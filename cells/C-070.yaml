@@ -1,0 +1,15 @@
+id: C-070
+title: Square 20
+goal: |
+  sq70() -> int returns 400. One file, no tests file.
+inputs:
+  - from: C-000
+    kind: implementation
+    contract: |
+      kit_demo package in src/kit_demo/.
+provides:
+  - "src/kit_demo/sw/q70.py: def sq70() -> int"
+allowed_paths: [src/kit_demo/sw/q70.py]
+outputs: [src/kit_demo/sw/q70.py]
+acceptance:
+  - cmd: "python -c \"import sys; sys.path.insert(0, 'src'); from kit_demo.sw.q70 import sq70; assert sq70() == 400\""

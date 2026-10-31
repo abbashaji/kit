@@ -1,0 +1,15 @@
+id: C-068
+title: Square 18
+goal: |
+  sq68() -> int returns 324. One file, no tests file.
+inputs:
+  - from: C-000
+    kind: implementation
+    contract: |
+      kit_demo package in src/kit_demo/.
+provides:
+  - "src/kit_demo/sw/q68.py: def sq68() -> int"
+allowed_paths: [src/kit_demo/sw/q68.py]
+outputs: [src/kit_demo/sw/q68.py]
+acceptance:
+  - cmd: "python -c \"import sys; sys.path.insert(0, 'src'); from kit_demo.sw.q68 import sq68; assert sq68() == 324\""

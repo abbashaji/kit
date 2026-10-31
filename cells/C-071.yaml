@@ -1,0 +1,15 @@
+id: C-071
+title: Square 21
+goal: |
+  sq71() -> int returns 441. One file, no tests file.
+inputs:
+  - from: C-000
+    kind: implementation
+    contract: |
+      kit_demo package in src/kit_demo/.
+provides:
+  - "src/kit_demo/sw/q71.py: def sq71() -> int"
+allowed_paths: [src/kit_demo/sw/q71.py]
+outputs: [src/kit_demo/sw/q71.py]
+acceptance:
+  - cmd: "python -c \"import sys; sys.path.insert(0, 'src'); from kit_demo.sw.q71 import sq71; assert sq71() == 441\""

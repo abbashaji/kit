@@ -1,0 +1,15 @@
+id: C-055
+title: Square 5
+goal: |
+  sq55() -> int returns 25. One file, no tests file.
+inputs:
+  - from: C-000
+    kind: implementation
+    contract: |
+      kit_demo package in src/kit_demo/.
+provides:
+  - "src/kit_demo/sw/q55.py: def sq55() -> int"
+allowed_paths: [src/kit_demo/sw/q55.py]
+outputs: [src/kit_demo/sw/q55.py]
+acceptance:
+  - cmd: "python -c \"import sys; sys.path.insert(0, 'src'); from kit_demo.sw.q55 import sq55; assert sq55() == 25\""

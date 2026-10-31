@@ -1,0 +1,15 @@
+id: C-054
+title: Square 4
+goal: |
+  sq54() -> int returns 16. One file, no tests file.
+inputs:
+  - from: C-000
+    kind: implementation
+    contract: |
+      kit_demo package in src/kit_demo/.
+provides:
+  - "src/kit_demo/sw/q54.py: def sq54() -> int"
+allowed_paths: [src/kit_demo/sw/q54.py]
+outputs: [src/kit_demo/sw/q54.py]
+acceptance:
+  - cmd: "python -c \"import sys; sys.path.insert(0, 'src'); from kit_demo.sw.q54 import sq54; assert sq54() == 16\""
