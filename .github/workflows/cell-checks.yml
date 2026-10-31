@@ -203,12 +203,19 @@ jobs:
         if: steps.agg.outcome == 'success' && inputs.merge
         run: |
           # --match-head-commit: if the agent pushed again after the check, the merge is refused.
-          # Prefer GitHub auto-merge (needs the repo setting); otherwise merge directly.
-          if gh pr merge "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --squash --auto --delete-branch --match-head-commit "$HEAD_SHA"; then
-            echo "auto-merge enabled"
-          else
-            gh pr merge "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --squash --delete-branch --match-head-commit "$HEAD_SHA"
-          fi
+          # Many cells merging at once make GitHub answer "base branch was modified": retry with a random
+          # back-off instead of failing (a failed merge used to leave a PASSED but unmerged PR).
+          merged=0
+          for attempt in 1 2 3 4 5 6; do
+            state=$(gh pr view "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --json state --jq .state || echo UNKNOWN)
+            if [ "$state" = "MERGED" ]; then merged=1; break; fi
+            if gh pr merge "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --squash --delete-branch --match-head-commit "$HEAD_SHA"; then
+              merged=1; break
+            fi
+            echo "merge attempt $attempt failed; retrying"
+            sleep $((5 + RANDOM % 15))
+          done
+          if [ "$merged" != "1" ]; then echo "merge failed after retries"; exit 1; fi
           # Merges made with GITHUB_TOKEN do not trigger push workflows: re-validate the plan explicitly.
           gh workflow run validate-plan.yml --repo "$GITHUB_REPOSITORY" --ref "$DEFAULT_BRANCH" || true
       - name: Fail the job when the gate failed
